@@ -59,6 +59,9 @@ jobs:
       contents: read
   
     steps:
+      - name: repo checkout
+        uses: actions/checkout@v3
+        
       - run: echo "${{ github.event_name }} ${{ github.ref }} $(git branch --show-current)"
 
 #      - name: runner preparation
@@ -66,8 +69,6 @@ jobs:
 #          sudo apt update -y 
 #          sudo apt install jq awscli -y
 #
-#      - name: repo checkout
-#        uses: actions/checkout@v3
 
 #      - name: assume oidc role
 #        uses: aws-actions/configure-aws-credentials@v1
