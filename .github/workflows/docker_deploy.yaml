@@ -59,7 +59,7 @@ jobs:
       contents: read
   
     steps:
-      - run: echo "${{ github.event_name }} ${{ github.ref }} ${{git branch --show-current }}"
+      - run: echo "${{ github.event_name }} ${{ github.ref }} $(git branch --show-current)"
 
 #      - name: runner preparation
 #        run: |
