@@ -20,6 +20,9 @@ on:
         default: '1.0.0'
         required: true
 
+defaults:
+  foo: bar 
+      
 env:
   AWS_REGION: us-west-2
   CLUSTER_NAME: cluster-name
@@ -58,10 +61,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-      
-    defaults:
-      foo: bar 
-      
+
     env:
       error-flag: false
   
