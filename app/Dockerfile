@@ -11,11 +11,10 @@ LABEL maintainer="guycole@gmail.com"
 
 # application
 RUN mkdir -p /opt/app
-RUN mkdir -p /opt/app/action-lab
-COPY driver.py /opt/app/action-lab
-COPY requirements.txt /opt/app/action-lab
-WORKDIR /opt/app/action-lab
+COPY driver.py /opt/app
+COPY requirements.txt /opt/app
+WORKDIR /opt/app
 RUN pip install -r requirements.txt 
 
 # start 
-CMD ["python", "/opt/app/action-lab/driver.py"]
+CMD ["python", "/opt/app/driver.py"]
