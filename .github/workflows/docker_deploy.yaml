@@ -27,6 +27,7 @@ env:
  
 jobs:
   docker:
+    # always build and package
     runs-on: ubuntu-latest
 
     steps:
@@ -63,10 +64,12 @@ jobs:
         uses: actions/checkout@v3
 
       - run: echo "${{ github.event_name }} ${{ github.ref }} $(git branch --show-current)"
-        # push
-        # refs/heads/main
-        # main
+        # push workflow_dispatch
+        # refs/heads/main ref/heads/branch2
+        # main branch2
 
+          # 
+#    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
 #      - name: runner preparation
 #        run: |
