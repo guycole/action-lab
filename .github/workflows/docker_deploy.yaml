@@ -63,8 +63,13 @@ jobs:
       - name: repo checkout
         uses: actions/checkout@v3
 
+      - name: test
+        if [[ ${{ github.event.inputs.deployment }} == "" ]]; then
+          echo "empty empty"
+        fi;
+
       - run: echo ${{ github.event.inputs.deployment }}
-      
+
       - run: echo "${{ github.event_name }} ${{ github.ref }} $(git branch --show-current)"
         # push workflow_dispatch
         # refs/heads/main ref/heads/branch2
