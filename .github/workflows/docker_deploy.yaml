@@ -65,8 +65,10 @@ jobs:
 
       - name: test
         if [[ "${{ github.event.inputs.deployment }}" == "" ]]; then
-          echo "empty empty"
+          echo "TEST_FLAG=empty" >> $GITHUB_OUTPUT;
         fi;
+
+      - run: echo ${{ GITHUB_OUTPUT }}
 
       - run: echo ${{ github.event.inputs.deployment }}
 
