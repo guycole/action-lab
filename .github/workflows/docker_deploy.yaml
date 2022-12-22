@@ -7,14 +7,14 @@ on:
 
   workflow_dispatch:
     inputs:
-      deployment:
-        type: choice
-        description: 'deployment environment'
-        options:
-        - development
-        - production
-      environment:
-        type: environment
+#      deployment:
+#        type: choice
+#        description: 'deployment environment'
+#        options:
+#        - development
+#        - production
+#      environment:
+#        type: environment
       release:
         description: 'release version'
         default: '1.0.0'
