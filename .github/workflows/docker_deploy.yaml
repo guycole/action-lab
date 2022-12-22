@@ -58,6 +58,12 @@ jobs:
     permissions:
       id-token: write
       contents: read
+      
+    defaults:
+      foo: bar 
+      
+    env:
+      error-flag: false
   
     steps:
       - name: repo checkout
@@ -67,7 +73,7 @@ jobs:
 #          echo "TEST_FLAG=empty" >> $GITHUB_OUTPUT;
 #        fi;
 
-      - run: echo ${{ GITHUB_OUTPUT }}
+#      - run: echo ${{ GITHUB_OUTPUT }}
 
       - run: echo ${{ github.event.inputs.deployment }}
 
