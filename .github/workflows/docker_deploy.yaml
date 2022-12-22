@@ -61,8 +61,12 @@ jobs:
     steps:
       - name: repo checkout
         uses: actions/checkout@v3
-        
+
       - run: echo "${{ github.event_name }} ${{ github.ref }} $(git branch --show-current)"
+        # push
+        # refs/heads/main
+        # main
+
 
 #      - name: runner preparation
 #        run: |
