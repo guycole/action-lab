@@ -68,7 +68,8 @@ jobs:
         uses: actions/checkout@v3
 
       - run: legal prod push
-        echo "::debug::ryryryryyryryry"
+        failure()
+        
 #        if: github.event_name == "push" && github.ref == "refs/heads/main"      
 #        if: github.repository == 'octo-org/octo-repo-prod'
 #        must be on main
