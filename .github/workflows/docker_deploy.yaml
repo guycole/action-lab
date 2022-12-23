@@ -86,6 +86,7 @@ jobs:
             error("test from error")
 
       - name: bbbbbb
+        if: github.event_name == "push"
         uses: actions/github-script@v6
         with:
           script: |
