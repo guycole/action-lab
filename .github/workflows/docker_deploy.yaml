@@ -71,14 +71,15 @@ jobs:
         uses: actions/setup-python@v4
         with:
             python-version: '3.x'
+
       - name: aaaaaa
-          uses: jannekem/run-python-script-action@v1
-          with:
-            script: |
-              import os
-              print("Directory contents:")
-              for f in os.listdir():
-                print(f)
+        uses: jannekem/run-python-script-action@v1
+        with:
+          script: |
+            import os
+            print("Directory contents:")
+            for f in os.listdir():
+              print(f)
 
 #        if: github.event_name == "push" && github.ref == "refs/heads/main"      
 #        if: github.repository == 'octo-org/octo-repo-prod'
