@@ -11,9 +11,9 @@ on:
     ERROR_FLAG: ${{ false }}
     TAG: ${{ github.run_number }}
 
-  push:
-    environment:
-      bogus: 'boogaloo'
+#  push:
+#    environment:
+#      bogus: 'boogaloo'
 
   workflow_dispatch:
     inputs:
