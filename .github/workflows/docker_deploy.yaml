@@ -67,9 +67,18 @@ jobs:
       - name: repo checkout
         uses: actions/checkout@v3
 
-      - run: legal prod push
-        if: ${{ failure() }}
-        echo ${{ "failure test" }}
+      - name: python for the win
+        uses: actions/setup-python@v4
+        with:
+            python-version: '3.x'
+      - name: aaaaaa
+          uses: jannekem/run-python-script-action@v1
+          with:
+            script: |
+              import os
+              print("Directory contents:")
+              for f in os.listdir():
+                print(f)
 
 #        if: github.event_name == "push" && github.ref == "refs/heads/main"      
 #        if: github.repository == 'octo-org/octo-repo-prod'
