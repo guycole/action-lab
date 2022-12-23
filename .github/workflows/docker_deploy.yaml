@@ -2,18 +2,9 @@ name: action-lab
  
 on:
   push:
+    # automagically run for push to main
     branches:
       - main
-
-  env:
-    AWS_REGION: us-west-2
-    CLUSTER_NAME: cluster-name
-    ERROR_FLAG: ${{ false }}
-    TAG: ${{ github.run_number }}
-
-#  push:
-#    environment:
-#      bogus: 'boogaloo'
 
   workflow_dispatch:
     inputs:
@@ -29,6 +20,12 @@ on:
         default: '1.0.0'
         description: 'release version'
         required: true
+
+env:
+  AWS_REGION: us-west-2
+  CLUSTER_NAME: cluster-name
+  ERROR_FLAG: ${{ false }}
+  TAG: ${{ github.run_number }}
 
 jobs:
   docker:
