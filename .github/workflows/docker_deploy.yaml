@@ -85,6 +85,12 @@ jobs:
             warning("test from warning")
             error("test from error")
 
+      - name: bbbbbb
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed('tire ripper')
+
 #        if: github.event_name == "push" && github.ref == "refs/heads/main"      
 #        if: github.repository == 'octo-org/octo-repo-prod'
 #        must be on main
