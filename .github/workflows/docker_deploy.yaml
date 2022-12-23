@@ -5,11 +5,15 @@ on:
     branches:
       - main
 
-env:
-  AWS_REGION: us-west-2
-  CLUSTER_NAME: cluster-name
-  ERROR_FLAG: ${{ false }}
-  TAG: ${{ github.run_number }}
+  env:
+    AWS_REGION: us-west-2
+    CLUSTER_NAME: cluster-name
+    ERROR_FLAG: ${{ false }}
+    TAG: ${{ github.run_number }}
+
+  push:
+    environment:
+      bogus: 'boogaloo'
 
   workflow_dispatch:
     inputs:
