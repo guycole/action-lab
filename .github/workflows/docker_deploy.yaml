@@ -67,6 +67,12 @@ jobs:
       - name: repo checkout
         uses: actions/checkout@v3
 
+      - run: legal prod push
+        echo "::debug::ryryryryyryryry"
+#        if: github.event_name == "push" && github.ref == "refs/heads/main"      
+#        if: github.repository == 'octo-org/octo-repo-prod'
+#        must be on main
+
 #      - if [[ "${{ github.event.inputs.deployment }}" == "" ]]; then
 #          echo "TEST_FLAG=empty" >> $GITHUB_OUTPUT;
 #        fi;
