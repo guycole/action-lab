@@ -77,9 +77,13 @@ jobs:
         with:
           script: |
             import os
-            print("Directory contents:")
+            print("directory contents:")
             for f in os.listdir():
               print(f)
+
+            debug("test from debug")
+            warning("test from warning")
+            error("test from error")
 
 #        if: github.event_name == "push" && github.ref == "refs/heads/main"      
 #        if: github.repository == 'octo-org/octo-repo-prod'
