@@ -69,7 +69,7 @@ jobs:
 
       - run: legal prod push
         if: ${{ failure() }}
-        run: echo ${{ "failure test" }}
+        echo ${{ "failure test" }}
 
 #        if: github.event_name == "push" && github.ref == "refs/heads/main"      
 #        if: github.repository == 'octo-org/octo-repo-prod'
