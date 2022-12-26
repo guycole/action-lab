@@ -53,8 +53,8 @@ jobs:
             ghcr.io/guycole/action-lab:latest
             ghcr.io/guycole/action-lab:${{ env.TAG }}
 
-#      - name: chart tweak
-#        run: sed -i "s|^appVersion:.*$|appVersion: ${ env.TAG }|" helm/Chart.yaml
+      - name: chart tweak
+        run: sed -i "s/^appVersion:.*$/appVersion: updated/" helm/Chart.yaml
 
       - name: chart tweak 2
         run: cat helm/Chart.yaml
