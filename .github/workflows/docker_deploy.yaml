@@ -56,6 +56,7 @@ jobs:
       - name: chart tweak
         run: |
           sed -i "s|^appVersion:.*$|appVersion: ${{ env.TAG }}|g" helm/Chart.yaml
+          sed -i "s|tag: latest|tag: ${{ env.TAG }}|g" helm/values.yaml
 
       - name: chart tweak 2
         run: cat helm/Chart.yaml
