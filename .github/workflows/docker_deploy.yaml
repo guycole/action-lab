@@ -61,6 +61,9 @@ jobs:
       - name: chart tweak 2
         run: cat helm/Chart.yaml
 
+      - name: chart tweak 3
+        run: cat helm/values.yaml
+
 # success() always() cancelled() failure()
 
   deploy:
