@@ -33,6 +33,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: guytest 111
+        if: github.event_name == 'push'
+        run: |
+          echo "NEED=true" >> "$GITHUB_ENV"
+
+      - run: echo ${{ env.NEED }}
+  
       - name: repo checkout
         uses: actions/checkout@v3
 
