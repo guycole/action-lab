@@ -23,6 +23,7 @@ on:
 
 env:
   AWS_REGION: us-west-2
+  BOGUS: bogus
   CLUSTER_NAME: cluster-name
   ERROR_FLAG: ${{ false }}
   TAG: ${{ github.run_number }}
@@ -36,9 +37,9 @@ jobs:
       - name: guytest 111
         if: github.event_name == 'push'
         run: |
-          echo "NEED=true" >> "$GITHUB_ENV"
+          echo "BOGUS=${{ github.run_number }} " >> "$GITHUB_ENV"
 
-      - run: echo ${{ env.NEED }}
+      - run: echo ${{ env.BOGUS }}
   
       - name: repo checkout
         uses: actions/checkout@v3
