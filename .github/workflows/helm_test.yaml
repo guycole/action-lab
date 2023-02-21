@@ -1,6 +1,11 @@
 name: helm_test
  
 on:
+  push:
+    # automagically run for push to main
+    branches:
+      - main
+
   workflow_dispatch:
 
 env:
