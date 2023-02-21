@@ -5,9 +5,7 @@ on:
 
 env:
   AWS_REGION: us-west-2
-  BOGUS: bogus
   CLUSTER_NAME: cluster-name
-  ERROR_FLAG: ${{ false }}
   TAG: ${{ github.run_number }}
 
 jobs:
@@ -22,10 +20,18 @@ jobs:
       - name: runner preparation
         run: |
           sudo apt update -y 
-          sudo apt install jq awscli -y
 
       - name: repo checkout
         uses: actions/checkout@v3
+      
+      - name: assume AWS role
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ vars.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-duration-seconds: 1200
+          role-session-name: ${{ github.run_number}}-role
 
       - name: sts diagnostic
         run: aws sts get-caller-identity
