@@ -39,11 +39,13 @@ jobs:
     steps:
       - run: echo ${{ env.BOGUS }}
 
-      - name: step 1
-        if [[ "${{ github.event.inputs.deployment }}" == "production primary" ]]; then \
-          echo "FLAG=primary" >> $GITHUB_OUTPUT; \
-        fi
-
-      - run: echo ${{ GITHUB_OUTPUT }}   
-
       - run: echo ${{ github.event.inputs.deployment }}
+
+      - name: step 1
+        run: |
+          if [[ "${{ github.event.inputs.deployment }}" == "production primary" ]]; then \
+            echo "FLAG=primary" >> $GITHUB_OUTPUT; \
+          fi
+
+      - run: echo ${{ GITHUB_OUTPUT }}
+      
