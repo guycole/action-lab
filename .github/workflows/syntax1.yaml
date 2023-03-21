@@ -43,8 +43,8 @@ jobs:
             echo "FLAG=primary" >> $GITHUB_OUTPUT; \
           fi
 
-          if [[ startsWith('github.event.inputs.deployment', 'production') ]]; then \
-            echo "FLAG=primary2" >> $GITHUB_OUTPUT; \
-          fi
-
       - run: echo ${{ steps.xxx.outputs.FLAG }}
+
+      - name: step 2
+        if: ${{ startsWith(github.event.inputs.deployment, 'production') }}
+        run: echo "prod noted"
