@@ -1,13 +1,6 @@
 name: action-lab
- 
+
 on:
-  workflow_dispatch:
-
-#  push:
-#    # automagically run for push to main
-#    branches:
-#      - main
-
   workflow_dispatch:
     inputs:
       deployment:
@@ -48,4 +41,3 @@ jobs:
           fi
 
       - run: echo ${{ GITHUB_OUTPUT }}
-      
