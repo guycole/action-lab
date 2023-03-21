@@ -1,4 +1,4 @@
-name: action-lab
+name: syntax1
 
 on:
   workflow_dispatch:
