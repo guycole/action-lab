@@ -43,4 +43,8 @@ jobs:
             echo "FLAG=primary" >> $GITHUB_OUTPUT; \
           fi
 
+          if [[ startsWith('github.event.inputs.deployment', 'production') ]]; then \
+            echo "FLAG=primary2" >> $GITHUB_OUTPUT; \
+          fi
+
       - run: echo ${{ steps.xxx.outputs.FLAG }}
