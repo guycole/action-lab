@@ -34,10 +34,11 @@ jobs:
 
       - run: echo ${{ github.event.inputs.deployment }}
 
-      - name: step 1
-        run: |
-          if [[ "${{ github.event.inputs.deployment }}" == "production primary" ]]; then \
-            echo "FLAG=primary" >> $GITHUB_OUTPUT; \
-          fi
+#      - name: step 1
+#        id: xxx
+#        run: |
+#          if [[ "${{ github.event.inputs.deployment }}" == "production primary" ]]; then \
+#            echo "FLAG=primary" >> $GITHUB_OUTPUT; \
+#          fi
 
-      - run: echo ${{ GITHUB_OUTPUT }}
+      - run: echo ${{ steps.xxx.outputs.FLAG }}
