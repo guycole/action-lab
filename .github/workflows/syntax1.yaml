@@ -1,0 +1,49 @@
+name: action-lab
+ 
+on:
+  workflow_dispatch:
+
+#  push:
+#    # automagically run for push to main
+#    branches:
+#      - main
+
+  workflow_dispatch:
+    inputs:
+      deployment:
+        default: development
+        description: 'deployment environment'
+        required: true
+        type: choice
+        options:
+        - development
+        - production primary
+        - production alternate
+      release:
+        default: '1.0.0'
+        description: 'release version'
+        required: true
+
+env:
+  AWS_REGION: us-west-2
+  BOGUS: bogus
+  CLUSTER_NAME: cluster-name
+  ERROR_FLAG: ${{ false }}
+  TAG: ${{ github.run_number }}
+
+jobs:
+  tapdancer:
+    # always build and package
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo ${{ env.BOGUS }}
+
+      - name: step 1
+        if [[ "${{ github.event.inputs.deployment }}" == "production primary" ]]; then \
+          echo "FLAG=primary" >> $GITHUB_OUTPUT; \
+        fi
+
+      - run: echo ${{ GITHUB_OUTPUT }}   
+
+      - run: echo ${{ github.event.inputs.deployment }}
