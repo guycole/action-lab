@@ -54,8 +54,11 @@ jobs:
           echo "BBB=bbb" >> $GITHUB_OUTPUT;
           echo "CCC=ccc" >> $GITHUB_OUTPUT;
 
+      - name: step 3
         run: echo ${{ steps.yyy.outputs.BBB }}
 
+      - name: step 4
+        id: yyy
         if: ${{ startsWith(github.event.inputs.deployment, 'production') }}
         run: |
           echo "prod2 noted";
@@ -63,3 +66,5 @@ jobs:
           echo "YYY=yyy" >> $GITHUB_OUTPUT;
           echo "ZZZ=zzz" >> $GITHUB_OUTPUT;
 
+      - name: step 5
+        run: echo ${{ steps.yyy.outputs.YYY }}
