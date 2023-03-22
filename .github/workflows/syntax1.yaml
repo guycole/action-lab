@@ -54,7 +54,7 @@ jobs:
           echo "BBB=bbb" >> $GITHUB_OUTPUT;
           echo "CCC=ccc" >> $GITHUB_OUTPUT;
 
-          if: [[ ${{ endsWith(github.event.inputs.deployment, 'primary') }} ]]; then \
+          if [[ ${{ endsWith(github.event.inputs.deployment, 'primary') }} ]]; then \
             echo "dev noted"; \
             echo "XXX=xxx" >> $GITHUB_OUTPUT; \
             echo "YYY=yyy" >> $GITHUB_OUTPUT; \
