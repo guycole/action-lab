@@ -66,3 +66,35 @@ jobs:
 
       - name: step 5
         run: echo ${{ steps.yyy.outputs.YYY }}
+
+      - name: step7
+        id: zzz
+        run: |
+          echo "top of the run"
+
+          if [[ "${{ startsWith(github.event.inputs.deployment, 'production') }}" ]]; then \
+            echo "prod noted"; \
+            echo "AAA=aaa" >> $GITHUB_OUTPUT; \
+            echo "BBB=bbb" >> $GITHUB_OUTPUT; \
+            echo "CCC=ccc" >> $GITHUB_OUTPUT; \
+          fi
+
+          if [[ "${{ github.event.inputs.deployment }}" == "production primary" ]]; then \
+            echo "primary noted"; \
+            echo "XXX=xxx" >> $GITHUB_OUTPUT; \
+            echo "YYY=yyy" >> $GITHUB_OUTPUT; \
+            echo "ZZZ=zzz" >> $GITHUB_OUTPUT; \
+          fi
+
+          if [[ "${{ github.event.inputs.deployment }}" == "production alternate" ]]; then \
+            echo "alternate noted"; \
+            echo "XXX=aaa" >> $GITHUB_OUTPUT; \
+            echo "YYY=bbb" >> $GITHUB_OUTPUT; \
+            echo "ZZZ=ccc" >> $GITHUB_OUTPUT; \
+          fi
+
+      - name: step 8
+        run: echo ${{ steps.zzz.outputs.BBB }}
+
+      - name: step 9
+        run: echo ${{ steps.zzz.outputs.YYY }}
