@@ -54,17 +54,15 @@ jobs:
           echo "BBB=bbb" >> $GITHUB_OUTPUT;
           echo "CCC=ccc" >> $GITHUB_OUTPUT;
 
-      - name: step 3
-        run: echo ${{ steps.yyy.outputs.BBB }}
-
-      - name: step 4
-        id: yyy
-        if: ${{ startsWith(github.event.inputs.deployment, 'production') }}
+        if: ${{ startsWith(github.event.inputs.deployment, 'development') }}
         run: |
-          echo "prod2 noted";
+          echo "dev noted";
           echo "XXX=xxx" >> $GITHUB_OUTPUT;
           echo "YYY=yyy" >> $GITHUB_OUTPUT;
           echo "ZZZ=zzz" >> $GITHUB_OUTPUT;
+
+      - name: step 3
+        run: echo ${{ steps.yyy.outputs.BBB }}
 
       - name: step 5
         run: echo ${{ steps.yyy.outputs.YYY }}
