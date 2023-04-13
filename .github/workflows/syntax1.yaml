@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "${{ env.BOGUS }} ${{ github.event.inputs.deployment }}"
+      - run: echo ${{ env.BOGUS }}
 
       - run: echo ${{ github.event.inputs.deployment }}
 
@@ -49,13 +49,13 @@ jobs:
         id: yyy
         if: ${{ startsWith(github.event.inputs.deployment, 'production') }}
         run: |
-          echo "prod noted";
+          echo "production noted";
           echo "AAA=aaa" >> $GITHUB_OUTPUT;
           echo "BBB=bbb" >> $GITHUB_OUTPUT;
           echo "CCC=ccc" >> $GITHUB_OUTPUT;
 
           if [[ ${{ endsWith(github.event.inputs.deployment, 'primary') }} ]]; then \
-            echo "dev noted"; \
+            echo "primary noted"; \
             echo "XXX=xxx" >> $GITHUB_OUTPUT; \
             echo "YYY=yyy" >> $GITHUB_OUTPUT; \
             echo "ZZZ=zzz" >> $GITHUB_OUTPUT; \
@@ -73,7 +73,7 @@ jobs:
           echo "top of the run"
 
           if [[ "${{ startsWith(github.event.inputs.deployment, 'production') }}" ]]; then \
-            echo "prod noted"; \
+            echo "production noted"; \
             echo "AAA=aaa" >> $GITHUB_OUTPUT; \
             echo "BBB=bbb" >> $GITHUB_OUTPUT; \
             echo "CCC=ccc" >> $GITHUB_OUTPUT; \
@@ -91,6 +91,10 @@ jobs:
             echo "XXX=aaa" >> $GITHUB_OUTPUT; \
             echo "YYY=bbb" >> $GITHUB_OUTPUT; \
             echo "ZZZ=ccc" >> $GITHUB_OUTPUT; \
+          fi
+
+          if [[ "${{ github.event.inputs.deployment }}" == "production primary" || "${{ github.event.inputs.deployment }}" == "production alternate" ]]; then \
+            echo "production primary or production alternate noted"; \
           fi
 
       - name: step 8
