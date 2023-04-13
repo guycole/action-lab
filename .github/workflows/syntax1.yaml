@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{ env.BOGUS }}
+      - run: echo "${{ env.BOGUS }} ${{ github.event.inputs.deployment }} 
 
       - run: echo ${{ github.event.inputs.deployment }}
 
