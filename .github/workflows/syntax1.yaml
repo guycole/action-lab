@@ -72,7 +72,7 @@ jobs:
         run: |
           echo "top of the run"
 
-          if [[ "${{ startsWith(github.event.inputs.deployment, 'production') }}" ]]; then \
+          if [[ "${{ startsWith(github.event.inputs.deployment, 'production') }}" == true ]]; then \
             echo "production noted"; \
             echo "AAA=aaa" >> $GITHUB_OUTPUT; \
             echo "BBB=bbb" >> $GITHUB_OUTPUT; \
