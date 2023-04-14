@@ -47,14 +47,14 @@ jobs:
 
       - name: step 2
         id: yyy
-        if: ${{ startsWith(github.event.inputs.deployment, 'production') }}
+        if: ${{ startsWith(github.event.inputs.deployment, 'production') == true }}
         run: |
           echo "production noted";
           echo "AAA=aaa" >> $GITHUB_OUTPUT;
           echo "BBB=bbb" >> $GITHUB_OUTPUT;
           echo "CCC=ccc" >> $GITHUB_OUTPUT;
 
-          if [[ ${{ endsWith(github.event.inputs.deployment, 'primary') }} ]]; then \
+          if [[ ${{ endsWith(github.event.inputs.deployment, 'primary') }} == true ]]; then \
             echo "primary noted"; \
             echo "XXX=xxx" >> $GITHUB_OUTPUT; \
             echo "YYY=yyy" >> $GITHUB_OUTPUT; \
