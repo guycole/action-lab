@@ -1,0 +1,34 @@
+name: syntax2
+
+on:
+  push:
+    branches:
+    - develop
+    - master
+  workflow_dispatch:
+    inputs:
+      target:
+        type: choice
+        description: 'target environment'
+        default: dev
+        required: true
+        options:
+        - dev
+        - prod-us-pri
+        - prod-us-alt
+      repo-tag:
+        description: 'release tag'
+        default: 'latest'
+        required: true
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: sanity 1
+        run: echo ${{ github.event.inputs.target }}
+
+      - name: env-prep
+        run: |
+          echo "IS_PROD=${{ startsWith(github.event.inputs.target, 'prod') }}" >> $GITHUB_ENV;
+          echo $GITHUB_OUTPUT
