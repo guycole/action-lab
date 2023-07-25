@@ -32,7 +32,12 @@ jobs:
         run: |
           echo "IS_PROD=${{ startsWith(github.event.inputs.target, 'prod') }}" >> $GITHUB_OUTPUT;
       
-      - name: compare
+      - name: compare1
         if: steps.env-prep.outputs.IS_PROD == true
         run: |
           echo "IS_PROD noted";
+
+      - name: compare2
+        if: steps.env-prep.outputs.IS_PROD != true
+        run: |
+          echo "IS_PROD false";
