@@ -34,10 +34,16 @@ jobs:
       
       - name: compare1
         if: steps.env-prep.outputs.IS_PROD == true
-        run: |
-          echo "IS_PROD noted";
+        run: echo "IS_PROD noted";
 
       - name: compare2
         if: steps.env-prep.outputs.IS_PROD != true
-        run: |
-          echo "IS_PROD false";
+        run: echo "IS_PROD false";
+
+      - name: compare3
+        if: ${{ startsWith(github.event.inputs.target, 'prod' }} == true
+        run: echo "true true true"
+
+      - name: compare4
+        if: ${{ startsWith(github.event.inputs.target, 'prod' }} != true
+        run: echo "false false false"
