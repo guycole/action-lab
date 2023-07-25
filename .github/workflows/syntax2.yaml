@@ -41,9 +41,9 @@ jobs:
         run: echo "IS_PROD false";
 
       - name: compare3
-        if: ${{ startsWith(github.event.inputs.target, 'prod' }} == true
+        if: ${{ startsWith(github.event.inputs.target, 'prod') }} == true
         run: echo "true true true"
 
       - name: compare4
-        if: ${{ startsWith(github.event.inputs.target, 'prod' }} != true
+        if: ${{ startsWith(github.event.inputs.target, 'prod') }} != true
         run: echo "false false false"
