@@ -31,4 +31,8 @@ jobs:
       - name: env-prep
         run: |
           echo "IS_PROD=${{ startsWith(github.event.inputs.target, 'prod') }}" >> $GITHUB_OUTPUT;
-          echo ${{ GITHUB_OUTPUT }}
+      
+      - name: compare
+        if: steps.env-prep.outputs.IS_PROD == 'true'
+        run: |
+          echo "IS_PROD noted";
