@@ -47,3 +47,6 @@ jobs:
       - name: compare4
         if: ${{ startsWith(github.event.inputs.target, 'prod') }} != true
         run: echo "false false false"
+
+      - name: compare5
+        run: echo ${{ startsWith(github.event.inputs.target, 'prod') }}
