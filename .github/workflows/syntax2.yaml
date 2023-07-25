@@ -31,4 +31,4 @@ jobs:
       - name: env-prep
         run: |
           echo "IS_PROD=${{ startsWith(github.event.inputs.target, 'prod') }}" >> $GITHUB_ENV;
-          echo $GITHUB_OUTPUT
+          echo ${{ GITHUB_OUTPUT }}
