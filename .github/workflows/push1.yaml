@@ -8,9 +8,6 @@ on:
 
   workflow_dispatch:
 
-  env:
-    RUN_NUMBER: ${{ github.run_number }}
-
 jobs:
   job1:
     runs-on: ubuntu-latest
