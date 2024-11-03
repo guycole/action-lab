@@ -1,0 +1,31 @@
+name: push1
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'releases/**'
+
+  workflow_dispatch:
+
+  env:
+    RUN_NUMBER: ${{ github.run_number }}
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "on push"
+  
+      - name: environment variables
+        run: |
+          echo "GITHUB_REPOSITORY_SLUG=$GITHUB_REPOSITORY_SLUG"
+          echo "GITHUB_REPOSITORY_OWNER=$GITHUB_REPOSITORY_OWNER"
+          echo "GITHUB_REPOSITORY_OWNER_SLUG=$GITHUB_REPOSITORY_OWNER_SLUG"
+          echo "GITHUB_REPOSITORY_NAME=$GITHUB_REPOSITORY_NAME"
+          echo "GITHUB_REPOSITORY_NAME_SLUG=$GITHUB_REPOSITORY_NAME_SLUG"
+          echo "GITHUB_REF_SLUG=$GITHUB_REF_SLUG"
+          echo "GITHUB_REF_NAME=$GITHUB_REF_NAME"
+          echo "GITHUB_REF_NAME_SLUG=$GITHUB_REF_NAME_SLUG"
+          echo "GITHUB_SHA_SHORT=$GITHUB_SHA_SHORT"
