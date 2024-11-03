@@ -2,7 +2,6 @@ name: push1
 
 on:
   push:
-    # automagically run for push to main
     branches:
       - main
       - 'releases/**'
@@ -10,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  job1:
+  push1:
     runs-on: ubuntu-latest
 
     steps:

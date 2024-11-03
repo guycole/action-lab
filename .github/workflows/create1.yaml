@@ -1,7 +1,7 @@
-name: public1
+name: create1
 
 on:
-  public:
+  push:
     branches:
       - main
       - 'releases/**'
@@ -9,11 +9,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  public1:
+  create1:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "on public"
+      - run: echo "on create"
   
       - name: environment variables
         run: |
